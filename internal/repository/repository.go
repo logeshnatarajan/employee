@@ -8,7 +8,7 @@ import (
 )
 
 type EmployeeRepository interface {
-	CreateEmployee(emp model.Employee) (error, int)
+	CreateEmployee(emp model.Employee) (int, error)
 	GetEmployeeByID(id int) (model.Employee, error)
 	UpdateEmployee(emp model.Employee) error
 	DeleteEmployee(id int) error

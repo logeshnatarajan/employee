@@ -28,7 +28,7 @@ func (h *EmployeeHandler) CreateEmployee(c *gin.Context) {
 		return
 	}
 
-	err, emp.ID = h.Service.CreateEmployee(emp)
+	emp.ID, err = h.Service.CreateEmployee(emp)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
