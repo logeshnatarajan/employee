@@ -73,6 +73,11 @@ CREATE DATABASE employee_db;
 ```bash
 go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 ```
+- Run migration
+```bash
+migrate -database "postgres://postgres:qwerty@localhost:5432/users?sslmode=disable" -path migrations up
+
+```
 ### Step 4: Install Dependencies
 ```bash
 go mod tidy

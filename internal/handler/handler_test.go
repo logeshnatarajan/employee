@@ -21,9 +21,9 @@ type MockEmployeeService struct {
 // Ensure MockEmployeeService implements the EmployeeServiceInterface
 var _ service.EmployeeServiceInterface = (*MockEmployeeService)(nil)
 
-func (m *MockEmployeeService) CreateEmployee(emp model.Employee) error {
+func (m *MockEmployeeService) CreateEmployee(emp model.Employee) (error, int) {
 	args := m.Called(emp)
-	return args.Error(0)
+	return args.Error(0), emp.ID
 }
 
 func (m *MockEmployeeService) GetEmployeeByID(id int) (model.Employee, error) {

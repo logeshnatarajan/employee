@@ -8,7 +8,7 @@ import (
 )
 
 type EmployeeRepository interface {
-	CreateEmployee(emp model.Employee) error
+	CreateEmployee(emp model.Employee) (error, int)
 	GetEmployeeByID(id int) (model.Employee, error)
 	UpdateEmployee(emp model.Employee) error
 	DeleteEmployee(id int) error
@@ -23,9 +23,9 @@ func NewPostgresRepository(db *sql.DB) *PostgresRepository {
 	return &PostgresRepository{db: db}
 }
 
-func (r *PostgresRepository) CreateEmployee(emp model.Employee) error {
+func (r *PostgresRepository) CreateEmployee(emp model.Employee) (error, int) {
 	query := "INSERT INTO employees (name, position, salary) VALUES ($1, $2, $3) RETURNING id"
-	return r.db.QueryRow(query, emp.Name, emp.Position, emp.Salary).Scan(&emp.ID)
+	return r.db.QueryRow(query, emp.Name, emp.Position, emp.Salary).Scan(&emp.ID), emp.ID
 }
 
 func (r *PostgresRepository) GetEmployeeByID(id int) (model.Employee, error) {

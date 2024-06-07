@@ -18,12 +18,18 @@ func NewEmployeeHandler(service service.EmployeeServiceInterface) *EmployeeHandl
 }
 
 func (h *EmployeeHandler) CreateEmployee(c *gin.Context) {
-	var emp model.Employee
-	if err := c.ShouldBindJSON(&emp); err != nil {
+	var (
+		err error
+		emp model.Employee
+	)
+
+	if err = c.ShouldBindJSON(&emp); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	if err := h.Service.CreateEmployee(emp); err != nil {
+
+	err, emp.ID = h.Service.CreateEmployee(emp)
+	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}

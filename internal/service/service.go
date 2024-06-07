@@ -6,7 +6,7 @@ import (
 )
 
 type EmployeeServiceInterface interface {
-	CreateEmployee(emp model.Employee) error
+	CreateEmployee(emp model.Employee) (error, int)
 	GetEmployeeByID(id int) (model.Employee, error)
 	UpdateEmployee(emp model.Employee) error
 	DeleteEmployee(id int) error
@@ -21,7 +21,7 @@ func NewEmployeeService(repo repository.EmployeeRepository) *EmployeeService {
 	return &EmployeeService{repo: repo}
 }
 
-func (s *EmployeeService) CreateEmployee(emp model.Employee) error {
+func (s *EmployeeService) CreateEmployee(emp model.Employee) (error, int) {
 	return s.repo.CreateEmployee(emp)
 }
 
