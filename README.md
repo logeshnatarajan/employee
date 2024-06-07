@@ -7,7 +7,7 @@ This is a Go-based Employee Management System with a RESTful API. The applicatio
 - Create, Read, Update, Delete (CRUD) operations for employees
 - RESTful API with pagination
 - Concurrency-safe implementation
-- Unit testing for service and handler layers
+- Unit testing for handler layers
 
 ## Technologies
 
