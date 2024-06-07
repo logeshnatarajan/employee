@@ -25,6 +25,7 @@ This is a Go-based Employee Management System with a RESTful API. The applicatio
 
 ## Project Structure
 
+```
 employee/
 │
 ├── internal/
@@ -53,6 +54,7 @@ employee/
 ├── go.mod
 ├── go.sum
 └── README.md
+```
 
 ## Setup
 ### Step 1: Clone the Repository
