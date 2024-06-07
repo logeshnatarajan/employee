@@ -23,9 +23,9 @@ func NewPostgresRepository(db *sql.DB) *PostgresRepository {
 	return &PostgresRepository{db: db}
 }
 
-func (r *PostgresRepository) CreateEmployee(emp model.Employee) (error, int) {
+func (r *PostgresRepository) CreateEmployee(emp model.Employee) (int, error) {
 	query := "INSERT INTO employees (name, position, salary) VALUES ($1, $2, $3) RETURNING id"
-	return r.db.QueryRow(query, emp.Name, emp.Position, emp.Salary).Scan(&emp.ID), emp.ID
+	return emp.ID, r.db.QueryRow(query, emp.Name, emp.Position, emp.Salary).Scan(&emp.ID)
 }
 
 func (r *PostgresRepository) GetEmployeeByID(id int) (model.Employee, error) {
