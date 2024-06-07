@@ -23,7 +23,7 @@ var _ service.EmployeeServiceInterface = (*MockEmployeeService)(nil)
 
 func (m *MockEmployeeService) CreateEmployee(emp model.Employee) (int, error) {
 	args := m.Called(emp)
-	return emp.ID, args.Error(1)
+	return emp.ID, args.Error(0)
 }
 
 func (m *MockEmployeeService) GetEmployeeByID(id int) (model.Employee, error) {
