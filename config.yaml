@@ -1,0 +1,5 @@
+dbhost: "localhost"
+dbuser: "postgres"
+dbpassword: "qwerty"
+dbname: "users"
+dbport: 5432
