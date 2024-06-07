@@ -84,7 +84,7 @@ go mod tidy
 ```
 ### Step 5: Run the Application
 ```bash
-go run main.go
+go run ./cmd/server/main.go
 ```
 ### Step 6: Run Tests
 ```bash
